@@ -1081,38 +1081,47 @@
 
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      menuBtn.textContent = open ? '✕' : '☰';
-    });
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuBtn.textContent = '☰';
-      menuBtn.setAttribute('aria-expanded','false');
-    }));
+
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.textContent = open ? '✕' : '☰';
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuBtn.textContent = '☰';
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
 
     const modal = document.getElementById('contactModal');
-    const closeModal = () => modal.classList.remove('open');
-    document.querySelectorAll('.open-contact').forEach(btn => btn.addEventListener('click', () => modal.classList.add('open')));
-    document.getElementById('closeModal').addEventListener('click', closeModal);
-    modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+    const closeBtn = document.getElementById('closeModal');
 
-        if (!response.ok) throw new Error('Submission failed');
+    if (modal) {
+      const closeModal = () => modal.classList.remove('open');
 
-        form.reset();
-        if (success) success.style.display = 'block';
-      } catch (err) {
-        alert('Your inquiry could not be sent. Please complete the human verification and try again.');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = originalText;
-      }
-    });
+      document.querySelectorAll('.open-contact').forEach(btn => {
+        btn.addEventListener('click', () => modal.classList.add('open'));
+      });
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-  
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeModal();
+      });
+    }
+
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
   </script>
 </body>
 </html>

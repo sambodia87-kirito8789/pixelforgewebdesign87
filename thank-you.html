@@ -1030,8 +1030,10 @@
     </div>
   </footer>
   <script>
+
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
+
     if (menuBtn && navLinks) {
       menuBtn.addEventListener('click', () => {
         const open = navLinks.classList.toggle('open');
@@ -1039,8 +1041,10 @@
         menuBtn.textContent = open ? '✕' : '☰';
       });
     }
-    const year = document.getElementById('year');
-    if (year) year.textContent = new Date().getFullYear();
-</script>
+
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  </script>
 </body>
 </html>
