@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="View selected PixelForge client website projects." />
+  <meta name="description" content="Thank you for contacting PixelForge Web Design." />
   <meta name="theme-color" content="#0a0d14" />
-  <title>Portfolio | PixelForge Web Design</title>
+  <title>Thank You | PixelForge Web Design</title>
   <style>
 
     :root{
@@ -945,19 +945,19 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="canonical" href="https://pixelforgewebdesigner.org/portfolio.html">
+  <link rel="canonical" href="https://pixelforgewebdesigner.org/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PixelForge Web Design">
-  <meta property="og:title" content="Portfolio | PixelForge Web Design">
-  <meta property="og:description" content="View selected PixelForge client website projects.">
-  <meta property="og:url" content="https://pixelforgewebdesigner.org/portfolio.html">
+  <meta property="og:title" content="PixelForge Web Design | Freelance Website Design">
+  <meta property="og:description" content="Freelance website design for small businesses, creators, and growing brands.">
+  <meta property="og:url" content="https://pixelforgewebdesigner.org/">
   <meta property="og:image" content="https://pixelforgewebdesigner.org/assets/pixelforge-share.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="PixelForge Web Design homepage preview">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Portfolio | PixelForge Web Design">
-  <meta name="twitter:description" content="View selected PixelForge client website projects.">
+  <meta name="twitter:title" content="PixelForge Web Design | Freelance Website Design">
+  <meta name="twitter:description" content="Freelance website design for small businesses, creators, and growing brands.">
   <meta name="twitter:image" content="https://pixelforgewebdesigner.org/assets/pixelforge-share.jpg">
   <!-- /PixelForge favicon + social preview -->
 
@@ -983,9 +983,9 @@
         <span>PixelForge <small>WEB DESIGN • DIGITAL FORGE</small></span>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="services.html">Services</a>
-        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="portfolio.html">Portfolio</a>
         <a href="process.html">Process</a>
         <a href="styles.html">Design Styles</a>
         <a href="about.html">About</a>
@@ -996,13 +996,19 @@
   </header>
 
   <main>
-
-    <section class="page-hero"><div class="container"><span class="eyebrow">Selected Client Work</span><h1 class="section-title">Websites I’ve helped bring to life.</h1><p class="section-copy">A growing collection of freelance website projects built and developed through Wix.</p></div></section>
-    <section class="section"><div class="container"><div class="grid portfolio-grid">
-      <article class="portfolio-card"><div class="portfolio-visual fishing"><div class="portfolio-browser"><small>WIX WEBSITE • ECOMMERCE</small><strong>KC School’em Umbrella Rigs</strong><span>Fishing products + online storefront</span></div></div><div class="portfolio-body"><span class="portfolio-tag">Client Website</span><h3>KC School’em</h3><p>A fishing-focused Wix website featuring umbrella rigs, product shopping, fishing reports, educational content, a gallery, and customer contact options.</p><a class="portfolio-link" href="https://www.kcschoolem.com/" target="_blank" rel="noopener noreferrer">Visit Live Website ↗</a></div></article>
-      <article class="portfolio-card"><div class="portfolio-visual auto"><div class="portfolio-browser"><small>WIX WEBSITE • SERVICE BUSINESS</small><strong>Ben’s Automotive</strong><span>Mobile auto repair + service information</span></div></div><div class="portfolio-body"><span class="portfolio-tag">Client Website</span><h3>Ben’s Automotive</h3><p>A Wix website for a mobile automotive repair business, presenting services, company information, customer testimonials, and clear call-or-text contact options.</p><a class="portfolio-link" href="https://www.benscardoc.com/" target="_blank" rel="noopener noreferrer">Visit Live Website ↗</a></div></article>
-    </div></div></section>
-
+    <section class="section" style="min-height:58vh;display:flex;align-items:center">
+      <div class="container">
+        <div class="strategy-panel" style="max-width:720px;margin:0 auto;text-align:center;padding:42px 30px">
+          <div class="icon" style="margin:0 auto 20px;width:58px;height:58px;font-size:1.55rem">✓</div>
+          <span class="eyebrow">Inquiry Received</span>
+          <h1 class="section-title" style="margin:18px auto 14px;max-width:620px">Your project inquiry has been sent.</h1>
+          <p class="section-copy" style="margin:0 auto 26px;max-width:590px">
+            Thank you for contacting PixelForge Web Design. Your information has been submitted successfully and will be reviewed as soon as possible.
+          </p>
+          <a class="btn btn-primary" href="/index.html">Return to PixelForge →</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -1023,72 +1029,18 @@
       <div class="copyright"><span>© <span id="year"></span> PixelForge. All rights reserved.</span><span>Forged for clarity, speed, and growth.</span></div>
     </div>
   </footer>
-
-  <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
-    <div class="modal-card">
-      <div class="modal-head">
-        <div><span class="eyebrow">Project Inquiry</span><h3 id="contactTitle" style="margin-top:10px">Tell me about your website project</h3></div>
-        <button class="close" id="closeModal" aria-label="Close contact form">✕</button>
-      </div>
-      <form id="projectForm" name="project-inquiry" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true">
-        <input type="hidden" name="form-name" value="project-inquiry">
-        <p style="display:none">
-          <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-        </p>
-        <div class="form-grid">
-          <div class="field"><label for="name">Name</label><input id="name" name="name" required placeholder="Your name"></div>
-          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@example.com"></div>
-          <div class="field"><label for="platform">Platform</label><select id="platform" name="platform"><option>Not sure yet</option><option>Wix</option><option>Hostinger</option><option>Shopify</option><option>WordPress</option><option>Custom HTML</option></select></div>
-          <div class="field"><label for="type">Project Type</label><select id="type" name="type"><option>New Website Design</option><option>Website Redesign</option><option>Small Business Website</option><option>eCommerce Website</option><option>Mockup / Wireframe</option><option>Website Setup / Launch Help</option></select></div>
-          <div class="field full"><label for="message">Project Details</label><textarea id="message" name="message" placeholder="Tell me about the business, website goals, pages, features, preferred style, and any examples you like..."></textarea></div>
-        </div>
-
-        <div class="captcha-wrap">
-          <div data-netlify-recaptcha="true"></div>
-          <p class="captcha-note">Please complete the verification above before submitting your inquiry.</p>
-        </div>
-        <button class="btn btn-primary" type="submit" style="width:100%;margin-top:16px">Submit Project Inquiry</button>
-        <p class="form-note">Your inquiry is submitted securely through Netlify Forms. Complete the human verification, then submit the form.</p>
-      </form>
-    </div>
-  </div>
-
   <script>
-
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      menuBtn.textContent = open ? '✕' : '☰';
-    });
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuBtn.textContent = '☰';
-      menuBtn.setAttribute('aria-expanded','false');
-    }));
-
-    const modal = document.getElementById('contactModal');
-    const closeModal = () => modal.classList.remove('open');
-    document.querySelectorAll('.open-contact').forEach(btn => btn.addEventListener('click', () => modal.classList.add('open')));
-    document.getElementById('closeModal').addEventListener('click', closeModal);
-    modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
-
-        if (!response.ok) throw new Error('Submission failed');
-
-        form.reset();
-        if (success) success.style.display = 'block';
-      } catch (err) {
-        alert('Your inquiry could not be sent. Please complete the human verification and try again.');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = originalText;
-      }
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-  
-  </script>
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.textContent = open ? '✕' : '☰';
+      });
+    }
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
