@@ -905,6 +905,44 @@
       }
     }
 
+  
+    /* Stronger contact-modal close control */
+    .modal-head .close{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:12px;
+      background:#242c39;
+      color:#ffffff;
+      font-size:1.25rem;
+      font-weight:900;
+      line-height:1;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,.28);
+      transition:background .18s ease,border-color .18s ease,transform .18s ease;
+    }
+    .modal-head .close:hover{
+      background:#3a4556;
+      border-color:rgba(255,255,255,.4);
+      transform:translateY(-1px);
+    }
+    .modal-head .close:focus-visible{
+      outline:3px solid rgba(103,232,249,.55);
+      outline-offset:3px;
+    }
+    @media(max-width:760px){
+      .modal-head .close{
+        width:46px;
+        height:46px;
+        min-width:46px;
+        font-size:1.3rem;
+      }
+    }
+
   </style>
 </head>
 <body>
