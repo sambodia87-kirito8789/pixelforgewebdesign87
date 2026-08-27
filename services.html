@@ -943,6 +943,76 @@
       }
     }
 
+  
+    /* Mobile header breathing-room refinement */
+    @media (max-width:760px){
+      .nav{
+        gap:14px;
+        padding-top:10px;
+        padding-bottom:10px;
+      }
+      .brand{
+        gap:12px;
+        flex:1 1 auto;
+        max-width:calc(100% - 60px);
+      }
+      .brand-mark{
+        flex:0 0 42px;
+        width:42px;
+        height:42px;
+      }
+      .brand > span:last-child{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:2px;
+        line-height:1;
+      }
+      .brand > span:last-child:not(.brand-mark){
+        font-size:1.02rem;
+      }
+      .brand span small{
+        display:block;
+        margin-top:2px;
+        font-size:.56rem;
+        line-height:1.15;
+        letter-spacing:.035em;
+        white-space:nowrap;
+      }
+      .menu-btn{
+        flex:0 0 46px;
+        width:46px;
+        height:46px;
+        margin-left:auto;
+      }
+    }
+
+    @media (max-width:430px){
+      .brand{
+        gap:10px;
+        max-width:calc(100% - 56px);
+      }
+      .brand-mark{
+        flex-basis:40px;
+        width:40px;
+        height:40px;
+      }
+      .brand > span:last-child:not(.brand-mark){
+        font-size:.96rem;
+      }
+      .brand span small{
+        font-size:.52rem;
+        letter-spacing:.02em;
+      }
+    }
+
+    @media (max-width:360px){
+      .brand span small{
+        white-space:normal;
+        max-width:145px;
+      }
+    }
+
   </style>
 </head>
 <body>
