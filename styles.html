@@ -938,6 +938,29 @@
     }
 
   </style>
+
+  <!-- PixelForge favicon + social preview -->
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="canonical" href="https://pixelforgewebdesigner.org/styles.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PixelForge Web Design">
+  <meta property="og:title" content="Design Styles | PixelForge Web Design">
+  <meta property="og:description" content="Explore PixelForge website design directions and visual styles.">
+  <meta property="og:url" content="https://pixelforgewebdesigner.org/styles.html">
+  <meta property="og:image" content="https://pixelforgewebdesigner.org/assets/pixelforge-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PixelForge Web Design homepage preview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Design Styles | PixelForge Web Design">
+  <meta name="twitter:description" content="Explore PixelForge website design directions and visual styles.">
+  <meta name="twitter:image" content="https://pixelforgewebdesigner.org/assets/pixelforge-share.jpg">
+  <!-- /PixelForge favicon + social preview -->
+
 </head>
 <body>
   <div class="forge-ambient" aria-hidden="true">
@@ -1009,7 +1032,7 @@
         <div><span class="eyebrow">Project Inquiry</span><h3 id="contactTitle" style="margin-top:10px">Tell me about your website project</h3></div>
         <button class="close" id="closeModal" aria-label="Close contact form">✕</button>
       </div>
-      <form id="projectForm" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true">
+      <form id="projectForm" name="project-inquiry" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true">
         <input type="hidden" name="form-name" value="project-inquiry">
         <p style="display:none">
           <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
@@ -1027,8 +1050,7 @@
           <p class="captcha-note">Please complete the verification above before submitting your inquiry.</p>
         </div>
         <button class="btn btn-primary" type="submit" style="width:100%;margin-top:16px">Submit Project Inquiry</button>
-        <p class="form-note">Your inquiry will be submitted securely through this website. PixelForge can receive submission notifications through Netlify.</p>
-        <div class="success" id="formSuccess" role="status" aria-live="polite">Thanks! Your project inquiry has been sent to PixelForge.</div>
+        <p class="form-note">Your inquiry is submitted securely through Netlify Forms. Complete the human verification, then submit the form.</p>
       </form>
     </div>
   </div>
@@ -1037,63 +1059,47 @@
 
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      menuBtn.textContent = open ? '✕' : '☰';
-    });
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuBtn.textContent = '☰';
-      menuBtn.setAttribute('aria-expanded','false');
-    }));
+
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.textContent = open ? '✕' : '☰';
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuBtn.textContent = '☰';
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
 
     const modal = document.getElementById('contactModal');
-    const closeModal = () => modal.classList.remove('open');
-    document.querySelectorAll('.open-contact').forEach(btn => btn.addEventListener('click', () => modal.classList.add('open')));
-    document.getElementById('closeModal').addEventListener('click', closeModal);
-    modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+    const closeBtn = document.getElementById('closeModal');
 
-    document.getElementById('projectForm').addEventListener('submit', async e => {
-      e.preventDefault();
+    if (modal) {
+      const closeModal = () => modal.classList.remove('open');
 
-      const form = e.currentTarget;
-      const submitButton = form.querySelector('button[type="submit"]');
-      const success = document.getElementById('formSuccess');
+      document.querySelectorAll('.open-contact').forEach(btn => {
+        btn.addEventListener('click', () => modal.classList.add('open'));
+      });
 
-      submitButton.disabled = true;
-      const originalText = submitButton.textContent;
-      submitButton.textContent = 'Sending...';
-      if (success) success.style.display = 'none';
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-      try {
-        const formData = new FormData(form);
-        const body = new URLSearchParams();
-        for (const [key, value] of formData.entries()) {
-          body.append(key, value);
-        }
+      modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
+      });
 
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: body.toString()
-        });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeModal();
+      });
+    }
 
-        if (!response.ok) throw new Error('Submission failed');
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        form.reset();
-        if (success) success.style.display = 'block';
-      } catch (err) {
-        alert('Your inquiry could not be sent. Please complete the human verification and try again.');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = originalText;
-      }
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-  
   </script>
 </body>
 </html>
