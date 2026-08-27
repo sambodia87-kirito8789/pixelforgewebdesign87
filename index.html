@@ -800,6 +800,35 @@
     .page-hero .section-title{max-width:850px}
     .page-hero .section-copy{max-width:760px}
     @media(max-width:760px){.page-hero{padding:52px 0 24px}}
+  
+    .captcha-wrap{
+      margin-top:16px;
+      padding:14px;
+      border:1px solid rgba(139,92,246,.18);
+      background:rgba(139,92,246,.06);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .captcha-wrap > div{
+      min-height:78px;
+    }
+    .captcha-note{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:.8rem;
+    }
+    @media(max-width:420px){
+      .captcha-wrap{
+        padding:10px;
+      }
+      .captcha-wrap > div{
+        transform:scale(.9);
+        transform-origin:left top;
+        width:111%;
+        margin-bottom:-8px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -925,7 +954,7 @@
         <div><span class="eyebrow">Project Inquiry</span><h3 id="contactTitle" style="margin-top:10px">Tell me about your website project</h3></div>
         <button class="close" id="closeModal" aria-label="Close contact form">✕</button>
       </div>
-      <form id="projectForm" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form id="projectForm" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true">
         <input type="hidden" name="form-name" value="project-inquiry">
         <p style="display:none">
           <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
@@ -936,6 +965,11 @@
           <div class="field"><label for="platform">Platform</label><select id="platform" name="platform"><option>Not sure yet</option><option>Wix</option><option>Hostinger</option><option>Shopify</option><option>WordPress</option><option>Custom HTML</option></select></div>
           <div class="field"><label for="type">Project Type</label><select id="type" name="type"><option>New Website Design</option><option>Website Redesign</option><option>Small Business Website</option><option>eCommerce Website</option><option>Mockup / Wireframe</option><option>Website Setup / Launch Help</option></select></div>
           <div class="field full"><label for="message">Project Details</label><textarea id="message" name="message" placeholder="Tell me about the business, website goals, pages, features, preferred style, and any examples you like..."></textarea></div>
+        </div>
+
+        <div class="captcha-wrap">
+          <div data-netlify-recaptcha="true"></div>
+          <p class="captcha-note">Please complete the verification above before submitting your inquiry.</p>
         </div>
         <button class="btn btn-primary" type="submit" style="width:100%;margin-top:16px">Submit Project Inquiry</button>
         <p class="form-note">Your inquiry will be submitted securely through this website. PixelForge can receive submission notifications through Netlify.</p>
@@ -996,7 +1030,7 @@
         form.reset();
         if (success) success.style.display = 'block';
       } catch (err) {
-        alert('There was a problem sending your inquiry. Please try again.');
+        alert('Your inquiry could not be sent. Please complete the human verification and try again.');
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = originalText;
