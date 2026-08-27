@@ -937,6 +937,79 @@
       }
     }
 
+  
+    .forge-principles{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+    .principle{
+      display:grid;
+      grid-template-columns:42px minmax(0,1fr);
+      gap:14px;
+      align-items:start;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#0d121b;
+    }
+    .principle-icon{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:rgba(139,92,246,.13);
+      color:#c4b5fd;
+      font-weight:900;
+      font-size:1.05rem;
+    }
+    .principle h3{
+      margin:0 0 5px;
+      font-size:1rem;
+      color:#f5f7ff;
+    }
+    .principle p{
+      margin:0;
+      color:var(--muted);
+      font-size:.9rem;
+      line-height:1.55;
+    }
+    @media(max-width:520px){
+      .principle{
+        grid-template-columns:36px minmax(0,1fr);
+        padding:14px;
+      }
+      .principle-icon{
+        width:36px;
+        height:36px;
+      }
+    }
+
+  
+    /* Refined PixelForge statement callout */
+    .strategy-panel .quote{
+      margin-top:22px;
+      padding:18px 20px;
+      background:rgba(139,92,246,.075);
+      border:1px solid rgba(139,92,246,.20);
+      border-left:3px solid #8b5cf6;
+      border-radius:14px;
+      color:#eef1fb;
+      font-size:1.02rem;
+      font-weight:650;
+      line-height:1.65;
+      letter-spacing:-.01em;
+      box-shadow:none;
+    }
+    @media(max-width:520px){
+      .strategy-panel .quote{
+        padding:16px;
+        font-size:.96rem;
+        line-height:1.6;
+      }
+    }
+
   </style>
 
   <!-- PixelForge favicon + social preview -->
@@ -1006,12 +1079,47 @@
         <div class="check-item"><span class="check">✓</span><div><b>Client-friendly website handoff</b>Organized pages and systems that are easier for clients to update after launch.</div></div>
       </div></div>
       <div class="strategy-panel">
-        <div class="bar"><strong>Website Project Readiness</strong><span class="status">On Track</span></div>
-        <div class="metric"><span>Visual consistency</span><small>95%</small><div class="meter"><span style="width:95%"></span></div></div>
-        <div class="metric"><span>Mobile optimization</span><small>92%</small><div class="meter"><span style="width:92%"></span></div></div>
-        <div class="metric"><span>Content structure</span><small>88%</small><div class="meter"><span style="width:88%"></span></div></div>
-        <div class="metric"><span>SEO foundations</span><small>84%</small><div class="meter"><span style="width:84%"></span></div></div>
+        <div class="bar">
+          <strong>What Every Build Is Shaped Around</strong>
+          <span class="status">PixelForge Standards</span>
+        </div>
+
+        <div class="forge-principles">
+          <div class="principle">
+            <span class="principle-icon">✦</span>
+            <div>
+              <h3>Visual Consistency</h3>
+              <p>Typography, spacing, colors, buttons, and page sections are kept cohesive so the website feels intentional from page to page.</p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <span class="principle-icon">▣</span>
+            <div>
+              <h3>Mobile Optimization</h3>
+              <p>Layouts are planned for phones and tablets as well as desktop screens, with readable content, accessible controls, and clean responsive behavior.</p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <span class="principle-icon">⌘</span>
+            <div>
+              <h3>Content Structure</h3>
+              <p>Information is organized so visitors can quickly understand the business, find what matters, and move naturally toward the next action.</p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <span class="principle-icon">↗</span>
+            <div>
+              <h3>SEO Foundations</h3>
+              <p>Pages are built with clear headings, useful page titles, descriptions, and logical structure to give search engines a solid starting point.</p>
+            </div>
+          </div>
+        </div>
+
         <div class="quote">“The goal is to deliver a professional website that looks intentional, explains the business clearly, and gives visitors an obvious next step.”</div>
+      </div>
       </div>
     </div></section>
 
