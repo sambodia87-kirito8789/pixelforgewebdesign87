@@ -937,6 +937,32 @@
       }
     }
 
+  
+
+    /* Accessibility enhancements — WCAG 2.2 AA target */
+    .skip-link{
+      position:fixed;left:16px;top:12px;z-index:10000;
+      transform:translateY(-160%);padding:.75rem 1rem;border-radius:10px;
+      background:#ffffff;color:#111827;font-weight:900;box-shadow:0 8px 24px rgba(0,0,0,.3);
+    }
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{
+      outline:3px solid #67e8f9 !important;outline-offset:3px;
+    }
+    a:focus-visible,button:focus-visible{border-radius:8px}
+    .btn-primary{background:#7c3aed;border-color:#7c3aed}
+    .sr-only{
+      position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;
+      margin:-1px !important;overflow:hidden !important;clip:rect(0,0,0,0) !important;
+      white-space:nowrap !important;border:0 !important;
+    }
+    body.modal-open{overflow:hidden}
+    main{overflow-wrap:anywhere}
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+    }
+
   </style>
 
   <!-- PixelForge favicon + social preview -->
@@ -963,6 +989,7 @@
 
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="forge-ambient" aria-hidden="true">
     <span class="forge-orb one"></span>
     <span class="forge-orb two"></span>
@@ -979,23 +1006,23 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="index.html" aria-label="PixelForge home">
-        <span class="brand-mark">PF</span>
+        <span class="brand-mark" aria-hidden="true">PF</span>
         <span>PixelForge <small>WEB DESIGN • DIGITAL FORGE</small></span>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
         <a href="portfolio.html">Portfolio</a>
-        <a href="process.html" class="active">Process</a>
+        <a href="process.html" aria-current="page" class="active">Process</a>
         <a href="styles.html">Design Styles</a>
         <a href="about.html">About</a>
         <button class="nav-cta open-contact">Start a Project</button>
       </nav>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
 
     <section class="page-hero"><div class="container"><span class="eyebrow">The Forge Process</span><h1 class="section-title">A simple freelance web design process from first idea to launch.</h1><p class="section-copy">Clients are guided through a clear process so expectations, layout decisions, revisions, and launch details stay organized.</p></div></section>
     <section class="section"><div class="container"><div class="grid process">
@@ -1012,21 +1039,21 @@
       <div class="footer-grid">
         <div>
           <a class="brand" href="index.html">
-            <span class="brand-mark">PF</span>
+            <span class="brand-mark" aria-hidden="true">PF</span>
             <span>PixelForge <small>WEB DESIGN • DIGITAL FORGE</small></span>
           </a>
           <p style="max-width:330px;margin-top:16px">Freelance website design for small businesses, creators, and growing brands — from layout planning and redesigns to complete website builds.</p>
         </div>
         <div><h4>Services</h4><a href="services.html">Custom Web Design</a><a href="services.html">Website Redesign</a><a href="services.html">eCommerce Design</a><a href="services.html">Mockups</a></div>
-        <div><h4>Explore</h4><a href="portfolio.html">Portfolio</a><a href="styles.html">Design Styles</a><a href="process.html">Process</a><a href="about.html">About</a></div>
+        <div><h4>Explore</h4><a href="portfolio.html">Portfolio</a><a href="styles.html">Design Styles</a><a href="process.html" aria-current="page">Process</a><a href="about.html">About</a></div>
         <div><h4>Contact</h4><button class="btn btn-secondary open-contact" style="margin-top:6px">Start a Project</button></div>
-        <div><h4>Legal</h4><a href="terms.html">Terms & Conditions</a><a href="privacy.html">Privacy Policy</a><a href="disclaimer.html">Disclaimer</a><a href="refund-policy.html">Refund Policy</a></div>
+        <div><h4>Legal</h4><a href="terms.html">Terms & Conditions</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="disclaimer.html">Disclaimer</a><a href="refund-policy.html">Refund Policy</a></div>
       </div>
       <div class="copyright"><span>© <span id="year"></span> PixelForge. All rights reserved.</span><span>Forged for clarity, speed, and growth.</span></div>
     </div>
   </footer>
 
-  <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+  <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
     <div class="modal-card">
       <div class="modal-head">
         <div><span class="eyebrow">Project Inquiry</span><h3 id="contactTitle" style="margin-top:10px">Tell me about your website project</h3></div>
@@ -1038,8 +1065,8 @@
           <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
         </p>
         <div class="form-grid">
-          <div class="field"><label for="name">Name</label><input id="name" name="name" required placeholder="Your name"></div>
-          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@example.com"></div>
+          <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required placeholder="Your name"></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
           <div class="field"><label for="platform">Platform</label><select id="platform" name="platform"><option>Not sure yet</option><option>Wix</option><option>Hostinger</option><option>Shopify</option><option>WordPress</option><option>Custom HTML</option></select></div>
           <div class="field"><label for="type">Project Type</label><select id="type" name="type"><option>New Website Design</option><option>Website Redesign</option><option>Small Business Website</option><option>eCommerce Website</option><option>Mockup / Wireframe</option><option>Website Setup / Launch Help</option></select></div>
           <div class="field full"><label for="message">Project Details</label><textarea id="message" name="message" placeholder="Tell me about the business, website goals, pages, features, preferred style, and any examples you like..."></textarea></div>
@@ -1056,34 +1083,66 @@
   </div>
 
   <script>
-
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
 
+    const setMenuState = (open) => {
+      if (!menuBtn || !navLinks) return;
+      navLinks.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menuBtn.textContent = open ? '✕' : '☰';
+    };
+
     if (menuBtn && navLinks) {
       menuBtn.addEventListener('click', () => {
-        const open = navLinks.classList.toggle('open');
-        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        menuBtn.textContent = open ? '✕' : '☰';
+        setMenuState(menuBtn.getAttribute('aria-expanded') !== 'true');
       });
 
       document.querySelectorAll('.nav-links a').forEach(a => {
-        a.addEventListener('click', () => {
-          navLinks.classList.remove('open');
-          menuBtn.textContent = '☰';
-          menuBtn.setAttribute('aria-expanded', 'false');
-        });
+        a.addEventListener('click', () => setMenuState(false));
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+          setMenuState(false);
+          menuBtn.focus();
+        }
       });
     }
 
     const modal = document.getElementById('contactModal');
     const closeBtn = document.getElementById('closeModal');
+    let modalOpener = null;
+
+    const getFocusable = () => {
+      if (!modal) return [];
+      return [...modal.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+        .filter(el => !el.closest('[style*="display:none"]') && el.offsetParent !== null);
+    };
+
+    const openModal = (opener) => {
+      if (!modal) return;
+      modalOpener = opener || document.activeElement;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      const first = modal.querySelector('#name') || closeBtn || getFocusable()[0];
+      window.requestAnimationFrame(() => first && first.focus());
+    };
+
+    const closeModal = () => {
+      if (!modal || !modal.classList.contains('open')) return;
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      if (modalOpener && typeof modalOpener.focus === 'function') modalOpener.focus();
+      modalOpener = null;
+    };
 
     if (modal) {
-      const closeModal = () => modal.classList.remove('open');
-
       document.querySelectorAll('.open-contact').forEach(btn => {
-        btn.addEventListener('click', () => modal.classList.add('open'));
+        btn.addEventListener('click', () => openModal(btn));
       });
 
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -1093,13 +1152,30 @@
       });
 
       document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') closeModal();
+        if (!modal.classList.contains('open')) return;
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closeModal();
+          return;
+        }
+        if (e.key === 'Tab') {
+          const focusable = getFocusable();
+          if (!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
       });
     }
 
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-
   </script>
 </body>
 </html>
