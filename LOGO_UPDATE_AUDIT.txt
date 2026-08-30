@@ -1,0 +1,7 @@
+PixelForge Brand Mark Update Audit
+================================
+Linked logo asset: assets/pixelforge-logo.png
+HTML pages checked: 12
+Text-based PF marks replaced: 24
+Remaining text-based PF marks: 0
+Pages referencing the new logo: 12

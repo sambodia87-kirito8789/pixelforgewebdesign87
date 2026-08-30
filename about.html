@@ -157,7 +157,10 @@
       background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;
       box-shadow:var(--shadow-sm), inset 0 1px 0 rgba(255,255,255,.03);
     }
-   
+    .icon{
+      width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+      background:rgba(139,92,246,.14);color:#c4b5fd;font-size:1.35rem;margin-bottom:20px;
+    }
     .card h3{margin:0 0 10px;font-size:1.22rem;letter-spacing:-.02em}
     .card p{margin:0;color:var(--muted);font-size:.96rem}
     .card ul{padding-left:1.1rem;color:#aab4c5;margin:18px 0 0}
@@ -1056,6 +1059,29 @@
   <meta name="twitter:description" content="Learn about PixelForge's freelance web design approach, responsive design priorities, and platform experience.">
   <meta name="twitter:image" content="https://pixelforgewebdesigner.org/assets/pixelforge-share.jpg">
   <!-- /PixelForge favicon + social preview -->
+
+
+<style id="pixelforge-brand-image-fix">
+/* PixelForge visible brand mark image */
+.brand img.brand-mark{
+  width:50px;
+  height:50px;
+  flex:0 0 50px;
+  display:block;
+  object-fit:contain;
+  padding:0;
+  border:0;
+  border-radius:12px;
+  background:transparent;
+  box-shadow:none;
+}
+@media(max-width:760px){
+  .brand img.brand-mark{width:46px;height:46px;flex-basis:46px}
+}
+@media(max-width:430px){
+  .brand img.brand-mark{width:42px;height:42px;flex-basis:42px}
+}
+</style>
 
 </head>
 <body>
